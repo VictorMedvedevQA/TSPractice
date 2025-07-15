@@ -14,6 +14,7 @@ test.describe('First block', () => {
 		await page.goto('https://coding.pasv.us/course')
 		await page.waitForSelector('.align-items-stretch .border-bottom a')
 
+
 		const elements = await page.locator('.align-items-stretch .border-bottom a').elementHandles()
 		for (let i = 0; i < elements.length; i++) {
 			// const element = elements[i];
@@ -35,6 +36,8 @@ test.describe('Forst block', () => {
 	// });
 
 	// В текущем же тесте мы инициализируем класс через фикстуры
+
+	// Бранч 1
 
 	test('Парсинг ответа метода server-prod.pasv.us/course', async ({ page, coursePage }) => {
 

@@ -7,7 +7,7 @@ node_modules/
 /playwright/.cache/
 /playwright-report
 /allure-results
-.env.prod
 .env.test
 state.json
 .idea/
+.env

@@ -1,4 +1,4 @@
-import { expect, Page } from '@playwright/test';
+import { expect, Locator, Page } from '@playwright/test';
 
 interface CourseItems {
 	courseName: string;
@@ -46,18 +46,18 @@ export class CoursePage {
 	constructor(public page: Page) { }
 
 	get courseListItems() {
-		return this.page.locator('.row.align-items-stretch .mb-2.pb-2.mb-2.border-bottom .col-md-3 a');
+		return this.page.locator('.align-items-stretch .border-bottom a');
 	}
 
-	async assertResponseAndLocatorsText(response, locator) {
-		const value = response.payload.filter(item => item.accessType === 'all').map(item => ({ name: item.name }))
-		const itemHeaders = await locator.elementHandles()
+	async assertResponseAndLocatorsText(response: { payload: any[]; }, locator: Locator) {
+		const value = response.payload.filter(item => item.accessType === 'all').map(item => ({ name: item.name }));
+		const itemHeaders = await locator.elementHandles();
 		for (let i = 0; i < itemHeaders.length; i++) {
 			let text = await itemHeaders[i].innerText();
-			let assertText = value[i].name
-			await expect(text).toEqual(assertText)
+			let assertText = value[i].name;
+			console.log(`text - ${text}`)
+			console.log(`assertText - ${assertText}`)
+			await expect(text).toEqual(assertText);
 		}
-
 	}
-
 }

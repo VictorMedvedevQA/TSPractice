@@ -1,4 +1,4 @@
-{
+export const courseMock = {
 	"message": "Courses get. Success",
 	"success": true,
 	"fail": false,
